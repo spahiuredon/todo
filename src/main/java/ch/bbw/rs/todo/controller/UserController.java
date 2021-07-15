@@ -1,5 +1,7 @@
-package ch.bbw.rs.todo.user;
+package ch.bbw.rs.todo.controller;
 
+import ch.bbw.rs.todo.entity.User;
+import ch.bbw.rs.todo.repository.ApplicationUserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +21,7 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public void signUp(@RequestBody ApplicationUser user) {
+    public void signUp(@RequestBody User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         applicationUserRepository.save(user);
     }
