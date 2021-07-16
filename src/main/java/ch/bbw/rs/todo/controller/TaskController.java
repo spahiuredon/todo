@@ -24,16 +24,19 @@ public class TaskController {
         this.taskRepository = taskRepository;
     }
 
+    // add a task
     @PostMapping
     public void addTask(@RequestBody Task task) {
         taskRepository.save(task);
     }
 
+    //get all Tasks in a list
     @GetMapping
     public List<Task> getTasks() {
         return taskRepository.findAll();
     }
 
+    //edit a Task and change the description and the title
     @PutMapping("/{id}")
     public void editTask(@PathVariable long id, @RequestBody Task task) {
         Task existingTask = taskRepository.findById(id).get();
@@ -43,6 +46,7 @@ public class TaskController {
         taskRepository.save(existingTask);
     }
 
+    //delete a task with the id
     @DeleteMapping("/{id}")
     public void deleteTask(@PathVariable long id) {
         Task taskToDel = taskRepository.findById(id).get();

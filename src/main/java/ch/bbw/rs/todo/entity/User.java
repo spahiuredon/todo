@@ -31,6 +31,7 @@ public class User {
         this.password = password;
     }
 
+    //many users in one role but only one role for a single user
     @ManyToOne
     @JoinColumn()
     private Role role;
