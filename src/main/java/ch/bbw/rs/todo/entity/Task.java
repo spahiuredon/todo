@@ -1,9 +1,6 @@
 package ch.bbw.rs.todo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Task {
@@ -36,4 +33,10 @@ public class Task {
     public Long getId() {
         return id;
     }
+
+    @ManyToOne
+    private Category category;
+
+    @ManyToOne
+    private User user;
 }
